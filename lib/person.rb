@@ -27,8 +27,40 @@ class Person
   end
 
   def get_paid(salary)
-    return_string = "all about the benjamins"
     @bank_account += salary
+    "all about the benjamins"
+  end
+
+  def take_bath
+    self.hygiene=(self.hygiene + 4)
+    "♪ Rub-a-dub just relaxing in the tub ♫"
+  end
+
+  def work_out
+    self.hygiene=(self.hygiene - 3)
+    self.happiness=(self.happiness + 2)
+    "♪ another one bites the dust ♫"
+  end
+
+  def call_friend(friend)
+    self.happiness=(self.happiness + 3)
+    friend.happiness=(friend.happiness + 3)
+    "Hi #{friend.name}! It's #{self.name}. How are you?"
+  end
+
+  def start_conversation(friend, topic)
+    return_string = ""
+    if (topic == "politics") then 
+      self.happiness=(self.happiness - 2)
+      friend.happiness=(friend.happiness - 2)
+      return_string = "blah blah partisan blah lobbyist"
+    elsif (topic == "weather")
+      self.happiness=(self.happiness + 1)
+      friend.happiness=(friend.happiness + 1)
+      return_string = "blah blah sun blah rain"
+    else 
+      return_string = "blah blah blah blah blah"
+    end
     return_string
   end
 end
