@@ -49,18 +49,17 @@ class Person
   end
 
   def start_conversation(friend, topic)
-    return_string = ""
-    if (topic == "politics") then 
-      self.happiness=(self.happiness - 2)
-      friend.happiness=(friend.happiness - 2)
-      return_string = "blah blah partisan blah lobbyist"
-    elsif (topic == "weather")
-      self.happiness=(self.happiness + 1)
-      friend.happiness=(friend.happiness + 1)
-      return_string = "blah blah sun blah rain"
-    else 
-      return_string = "blah blah blah blah blah"
+    if (topic == "politics") then
+      modify_happiness(friend, -2, "blah blah partisan blah lobbyist")
+    elsif (topic == "weather") then
+      modify_happiness(friend, 1, "blah blah sun blah rain")
+    else modify_happiness(friend, 0, "blah blah blah blah blah")
     end
-    return_string
+  end
+
+  def modify_happiness(friend, points, message)
+    self.happiness=(self.happiness + points)
+    friend.happiness=(friend.happiness + points)
+    message
   end
 end
